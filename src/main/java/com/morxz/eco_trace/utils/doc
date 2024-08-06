@@ -1,0 +1,62 @@
+                site de reference pour les facteurs d'emission
+GHG Emission Factors Hub | US EPA
+EPA's GHG Emission Factors Hub was designed to provide organizations with a regularly updated and easy-to-use set of default emission factors for organizational
+
+                Influence de la taille
+
+Petit :
+
+Description : Véhicules compacts et légers, généralement conçus pour une utilisation urbaine avec une consommation de carburant relativement faible.
+Exemples : Voitures compactes (comme la Peugeot 208), motos légères, scooters, vélos.
+Moyen :
+
+Description : Véhicules de taille intermédiaire qui offrent un bon équilibre entre espace et consommation de carburant. Ils sont adaptés à une variété d'utilisations, y compris des trajets plus longs.
+Exemples : Voitures berlines (comme la Toyota Corolla), SUV compacts, motos de taille moyenne.
+Grand :
+
+Description : Véhicules plus grands, souvent conçus pour le transport de plusieurs passagers ou de grandes charges. Ils consomment généralement plus de carburant en raison de leur taille et poids plus importants.
+Exemples : SUV moyens et grands (comme le Ford Explorer), camionnettes (comme le Ford F-150), minibus, véhicules utilitaires lourds.
+Très Grand :
+
+Description : Véhicules de grande taille, souvent utilisés pour le transport de charges importantes ou pour des usages commerciaux. Ils ont généralement une consommation de carburant plus élevée.
+Exemples : Grands camions (comme les camions-bennes), autocars, véhicules de transport lourd.
+
+
+                Facteur d'émission
+
+
+1. Collecte de Données
+Études et Rapports : Consulter des études et des rapports sur les émissions de gaz à effet de serre pour différents types de véhicules et carburants. Ces rapports peuvent être fournis par des organisations environnementales, des agences gouvernementales, ou des instituts de recherche.
+Normes et Directives : Utiliser les normes et les directives publiées par des organismes tels que l'Agence de Protection de l'Environnement (EPA) ou l'Agence Internationale de l'Énergie (AIE).
+2. Calcul des Facteurs d'Émission
+Formules de Base : Les facteurs d'émission sont souvent calculés en utilisant des formules qui prennent en compte la consommation de carburant et le type de carburant. Par exemple :
+Facteur d’
+E
+ˊ
+mission
+=
+E
+ˊ
+missions Totales de CO2
+Consommation Totale de Carburant
+Facteur d’
+E
+ˊ
+ mission=
+Consommation Totale de Carburant
+E
+ˊ
+ missions Totales de CO2
+​
+
+Exemples de Formules : Pour les véhicules à essence, le facteur d'émission peut être basé sur des études indiquant combien de CO2 est émis par litre de carburant brûlé.
+3. Classification par Taille et Type de Véhicule
+Taille du Véhicule : La taille du véhicule influence le facteur d'émission car les véhicules plus grands consomment généralement plus de carburant. Les véhicules sont donc souvent classés en petites, moyennes, grandes et très grandes tailles.
+Type de Véhicule : Différents types de véhicules (voiture, camion, bus, avion) ont des facteurs d'émission différents même pour le même type de carburant.
+4. Adaptation aux Spécificités Locales
+Variations Régionales : Les facteurs d'émission peuvent varier en fonction des conditions locales, comme la qualité du carburant, les pratiques de conduite, et les conditions climatiques.
+5. Consultation des Bases de Données
+Bases de Données : Utiliser des bases de données spécifiques qui contiennent des informations détaillées sur les émissions pour différentes combinaisons. Par exemple, des bases de données sur les émissions des véhicules (comme les bases de données de l'EPA) fournissent ces informations.
+6. Mise à Jour et Validation
+Mise à Jour Régulière : Les facteurs d'émission peuvent changer avec de nouvelles technologies et normes, il est donc important de les mettre à jour régulièrement.
+Validation : Vérifier les données et les méthodes de calcul pour s'assurer qu'elles sont exactes et conformes aux normes.
