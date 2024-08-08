@@ -7,92 +7,103 @@ public class EmissionFactors {
     private static final Map<String, Double> emissionFactors = new HashMap<>();
 
     static {
-        // Initialize emission factors
-        // Format: "FUELTYPE-VEHICULETYPE-VEHICULESIZE"
+        // Mapping of vehicle types and sizes to fuel types with emission factors
 
-        // Essence
-        emissionFactors.put("ESSENCE-VOITURE-PETIT", 2.31);
-        emissionFactors.put("ESSENCE-VOITURE-MOYEN", 2.50);
-        emissionFactors.put("ESSENCE-VOITURE-GRAND", 2.70);
-        emissionFactors.put("ESSENCE-MOTO-PETIT", 1.85);
-        emissionFactors.put("ESSENCE-MOTO-MOYEN", 2.00);
-        emissionFactors.put("ESSENCE-MOTO-GRAND", 2.20);
-        emissionFactors.put("ESSENCE-BATEAU-PETIT", 2.80);
-        emissionFactors.put("ESSENCE-BATEAU-MOYEN", 3.00);
-        emissionFactors.put("ESSENCE-BATEAU-GRAND", 3.30);
-        emissionFactors.put("ESSENCE-TRAIN-TRES_GRAND", 1.90); // Approximation pour un train
+        // Voiture
+        emissionFactors.put("VOITURE-ESSENCE-MOYEN", 2.50);
+        emissionFactors.put("VOITURE-ESSENCE-GRAND", 2.70);
+        emissionFactors.put("VOITURE-DIESEL-MOYEN", 2.90);
+        emissionFactors.put("VOITURE-DIESEL-GRAND", 3.10);
+        emissionFactors.put("VOITURE-GPL-MOYEN", 2.10);
+        emissionFactors.put("VOITURE-GPL-GRAND", 2.30);
+        emissionFactors.put("VOITURE-BIOCARBURANT-MOYEN", 2.00);
+        emissionFactors.put("VOITURE-BIOCARBURANT-GRAND", 2.20);
+        emissionFactors.put("VOITURE-ELECTRIQUE-MOYEN", 0.0);
+        emissionFactors.put("VOITURE-ELECTRIQUE-GRAND", 0.0);
+        emissionFactors.put("VOITURE-HYBRIDE-MOYEN", 1.70);
+        emissionFactors.put("VOITURE-HYBRIDE-GRAND", 1.90);
 
-        // Diesel
-        emissionFactors.put("DIESEL-VOITURE-PETIT", 2.68);
-        emissionFactors.put("DIESEL-VOITURE-MOYEN", 2.90);
-        emissionFactors.put("DIESEL-VOITURE-GRAND", 3.10);
-        emissionFactors.put("DIESEL-MOTO-PETIT", 2.10);
-        emissionFactors.put("DIESEL-MOTO-MOYEN", 2.30);
-        emissionFactors.put("DIESEL-MOTO-GRAND", 2.50);
-        emissionFactors.put("DIESEL-BATEAU-PETIT", 3.15);
-        emissionFactors.put("DIESEL-BATEAU-MOYEN", 3.40);
-        emissionFactors.put("DIESEL-BATEAU-GRAND", 3.60);
-        emissionFactors.put("DIESEL-TRAIN-TRES_GRAND", 2.00); // Approximation pour un train
+        // Voiture with unknown fuel type
+        double voitureAvgEmissionFactorMoyen = (2.50 + 2.90 + 2.10 + 2.00 + 1.70) / 5;
+        double voitureAvgEmissionFactorGrand = (2.70 + 3.10 + 2.30 + 2.20 + 1.90) / 5;
+        emissionFactors.put("VOITURE-INCONNU-MOYEN", voitureAvgEmissionFactorMoyen);
+        emissionFactors.put("VOITURE-INCONNU-GRAND", voitureAvgEmissionFactorGrand);
 
-        // Gaz de Pétrole Liquéfié (GPL)
-        emissionFactors.put("GPL-VOITURE-PETIT", 1.90);
-        emissionFactors.put("GPL-VOITURE-MOYEN", 2.10);
-        emissionFactors.put("GPL-VOITURE-GRAND", 2.30);
-        emissionFactors.put("GPL-MOTO-PETIT", 1.70);
-        emissionFactors.put("GPL-MOTO-MOYEN", 1.85);
-        emissionFactors.put("GPL-MOTO-GRAND", 2.00);
-        emissionFactors.put("GPL-BATEAU-PETIT", 2.70);
-        emissionFactors.put("GPL-BATEAU-MOYEN", 2.90);
-        emissionFactors.put("GPL-BATEAU-GRAND", 3.20);
-        emissionFactors.put("GPL-TRAIN-TRES_GRAND", 1.80); // Approximation pour un train
+        // Moto
+        emissionFactors.put("MOTO-ESSENCE-MOYEN", 2.00);
+        emissionFactors.put("MOTO-ESSENCE-GRAND", 2.20);
+        emissionFactors.put("MOTO-DIESEL-MOYEN", 2.30);
+        emissionFactors.put("MOTO-DIESEL-GRAND", 2.50);
+        emissionFactors.put("MOTO-GPL-MOYEN", 1.85);
+        emissionFactors.put("MOTO-GPL-GRAND", 2.00);
+        emissionFactors.put("MOTO-BIOCARBURANT-MOYEN", 1.65);
+        emissionFactors.put("MOTO-BIOCARBURANT-GRAND", 1.80);
+        emissionFactors.put("MOTO-ELECTRIQUE-MOYEN", 0.0);
+        emissionFactors.put("MOTO-ELECTRIQUE-GRAND", 0.0);
+        emissionFactors.put("MOTO-HYBRIDE-MOYEN", 1.50);
+        emissionFactors.put("MOTO-HYBRIDE-GRAND", 1.70);
 
-        // Biocarburants
-        emissionFactors.put("BIOCARBURANT-VOITURE-PETIT", 1.80);
-        emissionFactors.put("BIOCARBURANT-VOITURE-MOYEN", 2.00);
-        emissionFactors.put("BIOCARBURANT-VOITURE-GRAND", 2.20);
-        emissionFactors.put("BIOCARBURANT-MOTO-PETIT", 1.50);
-        emissionFactors.put("BIOCARBURANT-MOTO-MOYEN", 1.65);
-        emissionFactors.put("BIOCARBURANT-MOTO-GRAND", 1.80);
-        emissionFactors.put("BIOCARBURANT-BATEAU-PETIT", 2.50);
-        emissionFactors.put("BIOCARBURANT-BATEAU-MOYEN", 2.70);
-        emissionFactors.put("BIOCARBURANT-BATEAU-GRAND", 3.00);
-        emissionFactors.put("BIOCARBURANT-TRAIN-TRES_GRAND", 1.70); // Approximation pour un train
+        // Moto with unknown fuel type
+        double motoAvgEmissionFactorMoyen = (2.00 + 2.30 + 1.85 + 1.65 + 1.50) / 5;
+        double motoAvgEmissionFactorGrand = (2.20 + 2.50 + 2.00 + 1.80 + 1.70) / 5;
+        emissionFactors.put("MOTO-INCONNU-MOYEN", motoAvgEmissionFactorMoyen);
+        emissionFactors.put("MOTO-INCONNU-GRAND", motoAvgEmissionFactorGrand);
 
-        // Électricité
-        emissionFactors.put("ELECTRIQUE-VOITURE-PETIT", 0.0);
-        emissionFactors.put("ELECTRIQUE-VOITURE-MOYEN", 0.0);
-        emissionFactors.put("ELECTRIQUE-VOITURE-GRAND", 0.0);
-        emissionFactors.put("ELECTRIQUE-MOTO-PETIT", 0.0);
-        emissionFactors.put("ELECTRIQUE-MOTO-MOYEN", 0.0);
-        emissionFactors.put("ELECTRIQUE-MOTO-GRAND", 0.0);
-        emissionFactors.put("ELECTRIQUE-BATEAU-PETIT", 0.0);
-        emissionFactors.put("ELECTRIQUE-BATEAU-MOYEN", 0.0);
-        emissionFactors.put("ELECTRIQUE-BATEAU-GRAND", 0.0);
-        emissionFactors.put("ELECTRIQUE-TRAIN-TRES_GRAND", 0.0); // Approximation pour un train
+        // Piétons (course)
+        emissionFactors.put("PIEDS_COURSE-SANS_CARBURANT-RIEN", 0.0);
 
-        // Hybride
-        emissionFactors.put("HYBRIDE-VOITURE-PETIT", 1.50);
-        emissionFactors.put("HYBRIDE-VOITURE-MOYEN", 1.70);
-        emissionFactors.put("HYBRIDE-VOITURE-GRAND", 1.90);
-        emissionFactors.put("HYBRIDE-MOTO-PETIT", 1.30);
-        emissionFactors.put("HYBRIDE-MOTO-MOYEN", 1.50);
-        emissionFactors.put("HYBRIDE-MOTO-GRAND", 1.70);
-        emissionFactors.put("HYBRIDE-BATEAU-PETIT", 2.00);
-        emissionFactors.put("HYBRIDE-BATEAU-MOYEN", 2.20);
-        emissionFactors.put("HYBRIDE-BATEAU-GRAND", 2.40);
-        emissionFactors.put("HYBRIDE-TRAIN-TRES_GRAND", 1.60); // Approximation pour un train
+        // Vélo
+        emissionFactors.put("VELO-SANS_CARBURANT-RIEN", 0.0);
 
-        // Sans carburant
-        emissionFactors.put("SANS_CARBURANT-PIEDS_COURSE-PETIT", 0.0);
-        emissionFactors.put("SANS_CARBURANT-PIEDS_COURSE-MOYEN", 0.0);
-        emissionFactors.put("SANS_CARBURANT-PIEDS_COURSE-GRAND", 0.0);
-        emissionFactors.put("SANS_CARBURANT-VELO-PETIT", 0.0);
-        emissionFactors.put("SANS_CARBURANT-VELO-MOYEN", 0.0);
-        emissionFactors.put("SANS_CARBURANT-VELO-GRAND", 0.0);
+        // Bus
+        emissionFactors.put("BUS-ESSENCE-MOYEN", 3.20);
+        emissionFactors.put("BUS-ESSENCE-GRAND", 3.50);
+        emissionFactors.put("BUS-DIESEL-MOYEN", 3.70);
+        emissionFactors.put("BUS-DIESEL-GRAND", 4.00);
+        emissionFactors.put("BUS-ELECTRIQUE-MOYEN", 0.0);
+        emissionFactors.put("BUS-ELECTRIQUE-GRAND", 0.0);
+        emissionFactors.put("BUS-HYBRIDE-MOYEN", 2.40);
+        emissionFactors.put("BUS-HYBRIDE-GRAND", 2.70);
+
+        // Bus with unknown fuel type
+        double busAvgEmissionFactorMoyen = (3.20 + 3.70 + 2.40) / 3;
+        double busAvgEmissionFactorGrand = (3.50 + 4.00 + 2.70) / 3;
+        emissionFactors.put("BUS-INCONNU-MOYEN", busAvgEmissionFactorMoyen);
+        emissionFactors.put("BUS-INCONNU-GRAND", busAvgEmissionFactorGrand);
+
+        // Train
+        emissionFactors.put("TRAIN-ELECTRIQUE-RIEN", 0.0); // Assuming electric trains
+        emissionFactors.put("TRAIN-DIESEL-RIEN", 2.00); // Diesel trains
+
+        // Train with unknown fuel type
+        emissionFactors.put("TRAIN-INCONNU-RIEN", 1.00); // Assuming average emission factor
+
+        // Animal
+        emissionFactors.put("ANIMAL-SANS_CARBURANT-RIEN", 0.0);
+
+        // Bateau
+        emissionFactors.put("BATEAU-ESSENCE-MOYEN", 3.00);
+        emissionFactors.put("BATEAU-ESSENCE-GRAND", 3.30);
+        emissionFactors.put("BATEAU-DIESEL-MOYEN", 3.40);
+        emissionFactors.put("BATEAU-DIESEL-GRAND", 3.60);
+        emissionFactors.put("BATEAU-BIOCARBURANT-MOYEN", 2.70);
+        emissionFactors.put("BATEAU-BIOCARBURANT-GRAND", 3.00);
+
+        // Bateau with unknown fuel type
+        double bateauAvgEmissionFactorMoyen = (3.00 + 3.40 + 2.70) / 3;
+        double bateauAvgEmissionFactorGrand = (3.30 + 3.60 + 3.00) / 3;
+        emissionFactors.put("BATEAU-INCONNU-MOYEN", bateauAvgEmissionFactorMoyen);
+        emissionFactors.put("BATEAU-INCONNU-GRAND", bateauAvgEmissionFactorGrand);
+
+        // Avion
+        emissionFactors.put("AVION-JET_FUEL-RIEN", 3.15); // Assuming jet fuel for airplanes
+
+        // Avion with unknown fuel type
+        emissionFactors.put("AVION-INCONNU-RIEN", 3.15); // Assuming average emission factor
     }
 
+
     public static double getEmissionFactor(String key) {
-        // Get the emission factor from the map, default to 0.0 if not found
         return emissionFactors.getOrDefault(key, 0.0);
     }
 }

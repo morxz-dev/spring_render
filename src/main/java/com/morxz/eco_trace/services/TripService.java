@@ -105,7 +105,7 @@ public class TripService {
 
 
     private double getEmissionFactor(FuelType fuelType, VehiculeType vehiculeType, VehiculeSize vehiculeSize) {
-        String key = fuelType.name() + "-" + vehiculeType.name() + "-" + vehiculeSize.name();
+        String key = vehiculeType.name() + "-" + fuelType.name() + "-" + vehiculeSize.name();
         return EmissionFactors.getEmissionFactor(key);
     }
 
