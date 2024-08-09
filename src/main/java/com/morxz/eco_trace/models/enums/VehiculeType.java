@@ -3,7 +3,7 @@ package com.morxz.eco_trace.models.enums;
 public enum VehiculeType {
     VOITURE,            // Voiture
     MOTO,               // Moto
-    PIEDS_COURSE,       // Marche ou course à pied
+    MARCHE_COURSE,       // Marche ou course à pied
     VELO,
     BUS,// Vélo
     TRAIN,              // Train

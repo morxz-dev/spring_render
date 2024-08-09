@@ -16,6 +16,7 @@ public class TripDTO {
     private VehiculeSize vehicleSize;
     private VehiculeType vehiculeType;
     private FuelType fuelType;
+    private double distance;
     private double duration;
     private LocalDate date;
     private double carbonEmission;
@@ -27,12 +28,13 @@ public class TripDTO {
 
     // Constructeur avec tous les champs
     public TripDTO(Long id, VehiculeSize vehicleSize, VehiculeType vehiculeType, FuelType fuelType,
-                   double duration, LocalDate date, double carbonEmission, String userId) {
+                   double duration, double distance, LocalDate date, double carbonEmission, String userId) {
         this.id = id;
         this.vehicleSize = vehicleSize;
         this.vehiculeType = vehiculeType;
         this.fuelType = fuelType;
         this.duration = duration;
+        this.distance = distance;
         this.date = date;
         this.carbonEmission = carbonEmission;
         this.userId = userId;

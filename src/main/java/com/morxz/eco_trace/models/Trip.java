@@ -31,6 +31,8 @@ public class Trip {
     private FuelType fuelType; // Type de carburant
 
     private double duration; // Durée du voyage en heures
+    private double distance; // Distance en km
+
     private LocalDate date; // Date du voyage
     private double carbonEmission; // Émission de carbone pour ce voyage
 
@@ -45,6 +47,14 @@ public class Trip {
 
     public Long getId() {
         return id;
+    }
+
+    public double getDistance() {
+        return distance;
+    }
+
+    public void setDistance(double distance) {
+        this.distance = distance;
     }
 
     public void setId(Long id) {

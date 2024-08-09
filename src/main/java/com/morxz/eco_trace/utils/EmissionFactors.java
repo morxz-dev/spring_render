@@ -50,7 +50,7 @@ public class EmissionFactors {
         emissionFactors.put("MOTO-INCONNU-GRAND", motoAvgEmissionFactorGrand);
 
         // Piétons (course)
-        emissionFactors.put("PIEDS_COURSE-SANS_CARBURANT-RIEN", 0.0);
+        emissionFactors.put("MARCHE_COURSE-SANS_CARBURANT-RIEN", 0.0);
 
         // Vélo
         emissionFactors.put("VELO-SANS_CARBURANT-RIEN", 0.0);

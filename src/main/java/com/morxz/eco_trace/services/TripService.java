@@ -76,6 +76,7 @@ public class TripService {
         trip.setVehiculeType(tripDTO.getVehiculeType());
         trip.setFuelType(tripDTO.getFuelType());
         trip.setDuration(tripDTO.getDuration());
+        trip.setDistance(tripDTO.getDistance());
         trip.setDate(tripDTO.getDate());
 
         // Recalculer l'émission
@@ -100,7 +101,7 @@ public class TripService {
     private double calculateCarbonEmission(Trip trip) {
         // Exemple de calcul d'émissions basé sur la durée, le type de véhicule, etc.
         double emissionFactor = getEmissionFactor(trip.getFuelType(), trip.getVehiculeType(), trip.getVehicleSize());
-        return trip.getDuration() * emissionFactor; // Durée multipliée par le facteur d'émission
+        return trip.getDistance() * emissionFactor; // Durée multipliée par le facteur d'émission
     }
 
 
@@ -120,6 +121,7 @@ public class TripService {
         trip.setVehiculeType(tripDTO.getVehiculeType());
         trip.setFuelType(tripDTO.getFuelType());
         trip.setDuration(tripDTO.getDuration());
+        trip.setDistance(tripDTO.getDistance());
         trip.setDate(tripDTO.getDate());
         // Do not set carbonEmission here if it's calculated elsewhere
         return trip;
@@ -136,6 +138,7 @@ public class TripService {
         tripDTO.setVehiculeType(trip.getVehiculeType());
         tripDTO.setFuelType(trip.getFuelType());
         tripDTO.setDuration(trip.getDuration());
+        tripDTO.setDistance(trip.getDistance());
         tripDTO.setDate(trip.getDate());
         tripDTO.setCarbonEmission(trip.getCarbonEmission());
         // Ensure user information is correctly set
