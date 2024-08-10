@@ -75,8 +75,8 @@ public class TripService {
         trip.setVehicleSize(tripDTO.getVehicleSize());
         trip.setVehiculeType(tripDTO.getVehiculeType());
         trip.setFuelType(tripDTO.getFuelType());
-        trip.setDuration(tripDTO.getDuration());
         trip.setDistance(tripDTO.getDistance());
+        trip.setDuration(tripDTO.getDuration());
         trip.setDate(tripDTO.getDate());
 
         // Recalculer l'émission
