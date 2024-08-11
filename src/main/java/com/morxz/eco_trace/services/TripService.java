@@ -53,7 +53,6 @@ public class TripService {
         return mapToDTO(trip);
     }
 
-
     public List<TripDTO> getAllTrips() {
         return tripRepository.findAll().stream()
                 .map(this::mapToDTO)
@@ -97,13 +96,22 @@ public class TripService {
         tripRepository.deleteByUserId(userId);
     }
 
-
     private double calculateCarbonEmission(Trip trip) {
-        // Exemple de calcul d'émissions basé sur la durée, le type de véhicule, etc.
+        // Obtenir le facteur d'émission de base
         double emissionFactor = getEmissionFactor(trip.getFuelType(), trip.getVehiculeType(), trip.getVehicleSize());
-        return trip.getDistance() * emissionFactor; // Durée multipliée par le facteur d'émission
+
+        // Ajuster le facteur d'émission en fonction de la durée
+        double adjustedEmissionFactor = adjustEmissionFactorByDuration(emissionFactor, trip.getDuration());
+
+        // Calculer les émissions basées uniquement sur la distance et le facteur d'émission ajusté
+        return trip.getDistance() * adjustedEmissionFactor;
     }
 
+    private double adjustEmissionFactorByDuration(double emissionFactor, double duration) {
+        // Ajustement : chaque heure de durée augmente le facteur d'émission de 5%
+        double adjustmentFactor = 1 + (duration / 60) * 0.05; // 5% d'augmentation par heure
+        return emissionFactor * adjustmentFactor;
+    }
 
     private double getEmissionFactor(FuelType fuelType, VehiculeType vehiculeType, VehiculeSize vehiculeSize) {
         String key = vehiculeType.name() + "-" + fuelType.name() + "-" + vehiculeSize.name();
@@ -145,5 +153,4 @@ public class TripService {
         tripDTO.setUserId(trip.getUser() != null ? trip.getUser().getId() : null);
         return tripDTO;
     }
-
 }
