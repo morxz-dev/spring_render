@@ -11,32 +11,32 @@ public class UserStatsController {
     @Autowired
     private UserStatsService userStatsService;
 
-    @GetMapping("/current-day-emission/{userId}")
+    @GetMapping("/day/{userId}")
     public double getCurrentDayEmission(@PathVariable Long userId) {
         return userStatsService.getCurrentDayEmission(userId);
     }
 
-    @GetMapping("/previous-day-emission/{userId}")
+    @GetMapping("/previous-day/{userId}")
     public double getPreviousDayEmission(@PathVariable Long userId) {
         return userStatsService.getPreviousDayEmission(userId);
     }
 
-    @GetMapping("/current-week-max-emission/{userId}")
+    @GetMapping("/week-max/{userId}")
     public double getCurrentWeekMaxEmission(@PathVariable Long userId) {
         return userStatsService.getCurrentWeekMaxEmission(userId);
     }
 
-    @GetMapping("/current-week-min-emission/{userId}")
+    @GetMapping("/week-min/{userId}")
     public double getCurrentWeekMinEmission(@PathVariable Long userId) {
         return userStatsService.getCurrentWeekMinEmission(userId);
     }
 
-    @GetMapping("/current-week-average-emission/{userId}")
+    @GetMapping("/week-average/{userId}")
     public double getCurrentWeekAverageEmission(@PathVariable Long userId) {
         return userStatsService.getCurrentWeekAverageEmission(userId);
     }
 
-    @GetMapping("/total-emission-since-creation/{userId}")
+    @GetMapping("/total-since-creation/{userId}")
     public double getTotalEmissionSinceCreation(@PathVariable Long userId) {
         return userStatsService.getTotalEmissionSinceCreation(userId);
     }
@@ -47,17 +47,17 @@ public class UserStatsController {
     }
 
     // New endpoints
-    @GetMapping("/average-emission-since-creation/{userId}")
+    @GetMapping("/average-since-creation/{userId}")
     public double getAverageEmissionSinceCreation(@PathVariable Long userId) {
         return userStatsService.getAverageEmissionSinceCreation(userId);
     }
 
-    @GetMapping("/max-emission-since-creation/{userId}")
+    @GetMapping("/max-since-creation/{userId}")
     public double getMaxEmissionSinceCreation(@PathVariable Long userId) {
         return userStatsService.getMaxEmissionSinceCreation(userId);
     }
 
-    @GetMapping("/min-emission-since-creation/{userId}")
+    @GetMapping("/min-since-creation/{userId}")
     public double getMinEmissionSinceCreation(@PathVariable Long userId) {
         return userStatsService.getMinEmissionSinceCreation(userId);
     }
