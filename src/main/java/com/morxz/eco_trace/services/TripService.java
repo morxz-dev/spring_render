@@ -111,7 +111,7 @@ public class TripService {
         // Arrondir à un chiffre après la virgule
         BigDecimal roundedEmissions = BigDecimal.valueOf(emissions).setScale(1, RoundingMode.HALF_UP);
 
-        return roundedEmissions.doubleValue(); // Retourner la valeur arrondie
+        return roundedEmissions.doubleValue(); //la valeur arrondie
     }
 
     private double adjustEmissionFactorByDuration(double emissionFactor, double duration) {
