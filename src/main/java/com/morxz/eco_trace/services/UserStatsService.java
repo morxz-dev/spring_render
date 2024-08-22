@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 
 @Service
 public class UserStatsService {
@@ -15,41 +14,41 @@ public class UserStatsService {
     @Autowired
     private TripRepository tripRepository;
 
-    public double getCurrentDayEmission(Long userId) {
+    public double getCurrentDayEmission(String userId) { // Changed Long to String
         LocalDate today = LocalDate.now();
-        Double emission = tripRepository.findDailyEmissionForUser(userId, today);
+        Double emission = tripRepository.findDailyEmissionForUser(userId, today); // Ensure repo method accepts String
         return emission != null ? round(emission) : 0.0;
     }
 
-    public double getPreviousDayEmission(Long userId) {
+    public double getPreviousDayEmission(String userId) { // Changed Long to String
         LocalDate yesterday = LocalDate.now().minusDays(1);
-        Double emission = tripRepository.findDailyEmissionForUser(userId, yesterday);
+        Double emission = tripRepository.findDailyEmissionForUser(userId, yesterday); // Ensure repo method accepts String
         return emission != null ? round(emission) : 0.0;
     }
 
-    public double getCurrentWeekMaxEmission(Long userId) {
+    public double getCurrentWeekMaxEmission(String userId) { // Changed Long to String
         LocalDate today = LocalDate.now();
         LocalDate startOfWeek = today.with(java.time.DayOfWeek.MONDAY);
-        Double emission = tripRepository.findMaxEmissionForUserBetweenDates(userId, startOfWeek, today);
+        Double emission = tripRepository.findMaxEmissionForUserBetweenDates(userId, startOfWeek, today); // Ensure repo method accepts String
         return emission != null ? round(emission) : 0.0;
     }
 
-    public double getCurrentWeekMinEmission(Long userId) {
+    public double getCurrentWeekMinEmission(String userId) { // Changed Long to String
         LocalDate today = LocalDate.now();
         LocalDate startOfWeek = today.with(java.time.DayOfWeek.MONDAY);
-        Double emission = tripRepository.findMinEmissionForUserBetweenDates(userId, startOfWeek, today);
+        Double emission = tripRepository.findMinEmissionForUserBetweenDates(userId, startOfWeek, today); // Ensure repo method accepts String
         return emission != null ? round(emission) : 0.0;
     }
 
-    public double getCurrentWeekAverageEmission(Long userId) {
+    public double getCurrentWeekAverageEmission(String userId) { // Changed Long to String
         LocalDate today = LocalDate.now();
         LocalDate startOfWeek = today.with(java.time.DayOfWeek.MONDAY);
-        Double emission = tripRepository.findAverageEmissionForUserBetweenDates(userId, startOfWeek, today);
+        Double emission = tripRepository.findAverageEmissionForUserBetweenDates(userId, startOfWeek, today); // Ensure repo method accepts String
         return emission != null ? round(emission) : 0.0;
     }
 
-    public double getTotalEmissionSinceCreation(Long userId) {
-        Double emission = tripRepository.findTotalEmissionForUser(userId);
+    public double getTotalEmissionSinceCreation(String userId) { // Changed Long to String
+        Double emission = tripRepository.findTotalEmissionForUser(userId); // Ensure repo method accepts String
         return emission != null ? round(emission) : 0.0;
     }
 
@@ -61,18 +60,18 @@ public class UserStatsService {
     }
 
     // New methods
-    public double getAverageEmissionSinceCreation(Long userId) {
-        Double emission = tripRepository.findAverageEmissionForUser(userId);
+    public double getAverageEmissionSinceCreation(String userId) { // Changed Long to String
+        Double emission = tripRepository.findAverageEmissionForUser(userId); // Ensure repo method accepts String
         return emission != null ? round(emission) : 0.0;
     }
 
-    public double getMaxEmissionSinceCreation(Long userId) {
-        Double emission = tripRepository.findMaxEmissionForUser(userId);
+    public double getMaxEmissionSinceCreation(String userId) { // Changed Long to String
+        Double emission = tripRepository.findMaxEmissionForUser(userId); // Ensure repo method accepts String
         return emission != null ? round(emission) : 0.0;
     }
 
-    public double getMinEmissionSinceCreation(Long userId) {
-        Double emission = tripRepository.findMinEmissionForUser(userId);
+    public double getMinEmissionSinceCreation(String userId) { // Changed Long to String
+        Double emission = tripRepository.findMinEmissionForUser(userId); // Ensure repo method accepts String
         return emission != null ? round(emission) : 0.0;
     }
 

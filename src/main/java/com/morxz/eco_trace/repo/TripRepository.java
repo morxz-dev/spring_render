@@ -15,43 +15,45 @@ import java.util.Optional;
 
 @Repository
 public interface TripRepository extends JpaRepository<Trip, Long> {
-    List<Trip> findByUserId(String id);
+    List<Trip> findByUserId(String id); // No change needed
 
-    List<Trip> findByUser(User user);
+    List<Trip> findByUser(User user); // No change needed
+
     @Modifying
     @Transactional
     @Query("DELETE FROM Trip t WHERE t.user.id = :userId")
-    void deleteByUserId(@Param("userId") String userId);
-    Optional<Trip> findByIdAndUserId(Long id, String userId);
+    void deleteByUserId(@Param("userId") String userId); // No change needed
+
+    Optional<Trip> findByIdAndUserId(Long id, String userId); // No change needed
 
     @Query("SELECT SUM(t.carbonEmission) FROM Trip t WHERE t.user.id = :userId AND t.date = :date")
-    Double findDailyEmissionForUser(@Param("userId") Long userId, @Param("date") LocalDate date);
+    Double findDailyEmissionForUser(@Param("userId") String userId, @Param("date") LocalDate date); // Changed Long to String
 
     @Query("SELECT SUM(t.carbonEmission) FROM Trip t WHERE t.user.id = :userId AND t.date >= :startDate AND t.date <= :endDate")
-    Double findTotalEmissionForUserBetweenDates(@Param("userId") Long userId, @Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);
+    Double findTotalEmissionForUserBetweenDates(@Param("userId") String userId, @Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate); // Changed Long to String
 
     @Query("SELECT AVG(t.carbonEmission) FROM Trip t WHERE t.date >= :startDate AND t.date <= :endDate")
-    Double findAverageEmissionForAllUsersBetweenDates(@Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);
+    Double findAverageEmissionForAllUsersBetweenDates(@Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate); // No change needed
 
     @Query("SELECT MAX(t.carbonEmission) FROM Trip t WHERE t.user.id = :userId AND t.date >= :startDate AND t.date <= :endDate")
-    Double findMaxEmissionForUserBetweenDates(@Param("userId") Long userId, @Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);
+    Double findMaxEmissionForUserBetweenDates(@Param("userId") String userId, @Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate); // Changed Long to String
 
     @Query("SELECT MIN(t.carbonEmission) FROM Trip t WHERE t.user.id = :userId AND t.date >= :startDate AND t.date <= :endDate")
-    Double findMinEmissionForUserBetweenDates(@Param("userId") Long userId, @Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);
+    Double findMinEmissionForUserBetweenDates(@Param("userId") String userId, @Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate); // Changed Long to String
 
     @Query("SELECT AVG(t.carbonEmission) FROM Trip t WHERE t.user.id = :userId AND t.date >= :startDate AND t.date <= :endDate")
-    Double findAverageEmissionForUserBetweenDates(@Param("userId") Long userId, @Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);
+    Double findAverageEmissionForUserBetweenDates(@Param("userId") String userId, @Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate); // Changed Long to String
 
     @Query("SELECT SUM(t.carbonEmission) FROM Trip t WHERE t.user.id = :userId")
-    Double findTotalEmissionForUser(@Param("userId") Long userId);
+    Double findTotalEmissionForUser(@Param("userId") String userId); // Changed Long to String
 
     // New methods
     @Query("SELECT AVG(t.carbonEmission) FROM Trip t WHERE t.user.id = :userId")
-    Double findAverageEmissionForUser(@Param("userId") Long userId);
+    Double findAverageEmissionForUser(@Param("userId") String userId); // Changed Long to String
 
     @Query("SELECT MAX(t.carbonEmission) FROM Trip t WHERE t.user.id = :userId")
-    Double findMaxEmissionForUser(@Param("userId") Long userId);
+    Double findMaxEmissionForUser(@Param("userId") String userId); // Changed Long to String
 
     @Query("SELECT MIN(t.carbonEmission) FROM Trip t WHERE t.user.id = :userId")
-    Double findMinEmissionForUser(@Param("userId") Long userId);
+    Double findMinEmissionForUser(@Param("userId") String userId); // Changed Long to String
 }
