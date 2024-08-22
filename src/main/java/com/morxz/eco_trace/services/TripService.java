@@ -14,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -47,7 +49,6 @@ public class TripService {
     }
 
     public TripDTO getTripOfUser(String userId, Long tripId) {
-        // Fetch the trip from the repository based on the userId and tripId
         Trip trip = tripRepository.findByIdAndUserId(tripId, userId)
                 .orElse(null);
         return mapToDTO(trip);
@@ -104,11 +105,13 @@ public class TripService {
         double adjustedEmissionFactor = adjustEmissionFactorByDuration(emissionFactor, trip.getDuration());
 
         // Calculer les émissions basées uniquement sur la distance et le facteur d'émission ajusté
-        return trip.getDistance() * adjustedEmissionFactor;
+        double emission = trip.getDistance() * adjustedEmissionFactor;
+
+        // Arrondir l'émission calculée avant de la renvoyer
+        return round(emission);
     }
 
     private double adjustEmissionFactorByDuration(double emissionFactor, double duration) {
-        // Ajustement : chaque heure de durée augmente le facteur d'émission de 5%
         double adjustmentFactor = 1 + (duration / 60) * 0.05; // 5% d'augmentation par heure
         return emissionFactor * adjustmentFactor;
     }
@@ -116,6 +119,10 @@ public class TripService {
     private double getEmissionFactor(FuelType fuelType, VehiculeType vehiculeType, VehiculeSize vehiculeSize) {
         String key = vehiculeType.name() + "-" + fuelType.name() + "-" + vehiculeSize.name();
         return EmissionFactors.getEmissionFactor(key);
+    }
+
+    private double round(Double value) {
+        return new BigDecimal(value).setScale(1, RoundingMode.HALF_UP).doubleValue();
     }
 
     private Trip mapToEntity(TripDTO tripDTO) {
@@ -131,7 +138,6 @@ public class TripService {
         trip.setDuration(tripDTO.getDuration());
         trip.setDistance(tripDTO.getDistance());
         trip.setDate(tripDTO.getDate());
-        // Do not set carbonEmission here if it's calculated elsewhere
         return trip;
     }
 
@@ -149,7 +155,6 @@ public class TripService {
         tripDTO.setDistance(trip.getDistance());
         tripDTO.setDate(trip.getDate());
         tripDTO.setCarbonEmission(trip.getCarbonEmission());
-        // Ensure user information is correctly set
         tripDTO.setUserId(trip.getUser() != null ? trip.getUser().getId() : null);
         return tripDTO;
     }

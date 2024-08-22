@@ -76,6 +76,6 @@ public class UserStatsService {
     }
 
     private double round(Double value) {
-        return new BigDecimal(value).setScale(3, RoundingMode.HALF_UP).doubleValue();
+        return new BigDecimal(value).setScale(1, RoundingMode.HALF_UP).doubleValue();
     }
 }
