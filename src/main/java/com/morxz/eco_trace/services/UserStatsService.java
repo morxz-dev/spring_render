@@ -7,12 +7,42 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
+import java.time.DayOfWeek;
+import java.util.HashMap;
+import java.util.Map;
+
 
 @Service
 public class UserStatsService {
 
     @Autowired
     private TripRepository tripRepository;
+
+    public Map<String, Double> getWeeklyEmissions(String userId) {
+        Map<String, Double> emissions = new HashMap<>();
+
+        LocalDate today = LocalDate.now();
+        LocalDate startOfWeek = today.with(DayOfWeek.SUNDAY);
+
+        for (int i = 0; i < 7; i++) {
+            LocalDate date = startOfWeek.plusDays(i);
+            DayOfWeek dayOfWeek = date.getDayOfWeek();
+            String dayName = dayOfWeek.name().toLowerCase() + "Emission"; // e.g., "mondayEmission"
+
+            if (date.isAfter(today)) {
+                emissions.put(dayName, 0.0);
+            } else {
+                Double emission = tripRepository.findDailyEmissionForUser(userId, date);
+                emissions.put(dayName, emission != null ? round(emission) : 0.0);
+            }
+        }
+
+        return emissions;
+    }
+
+
+
+
 
     public double getCurrentDayEmission(String userId) { // Changed Long to String
         LocalDate today = LocalDate.now();

@@ -4,12 +4,22 @@ import com.morxz.eco_trace.services.UserStatsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/api/user-stats")
 public class UserStatsController {
 
     @Autowired
     private UserStatsService userStatsService;
+
+
+    @GetMapping("/weekly-emissions/{userId}")
+    public Map<String, Double> getWeeklyEmissions(@PathVariable String userId) {
+        return userStatsService.getWeeklyEmissions(userId);
+    }
+
+
 
     @GetMapping("/day/{userId}")
     public double getCurrentDayEmission(@PathVariable String userId) { // Changed Long to String
