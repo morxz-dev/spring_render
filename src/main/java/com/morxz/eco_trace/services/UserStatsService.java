@@ -109,6 +109,9 @@ public class UserStatsService {
         return emission != null ? round(emission) : 0.0;
     }
 
+
+
+
     private double round(Double value) {
         return new BigDecimal(value).setScale(1, RoundingMode.HALF_UP).doubleValue();
     }
