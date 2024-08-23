@@ -24,6 +24,15 @@ public class UserStats {
     private double monthlyChange;
     private double yearlyChange;
 
+    // New field for weekly emissions
+    private double sundayEmission;
+    private double mondayEmission;
+    private double tuesdayEmission;
+    private double wednesdayEmission;
+    private double thursdayEmission;
+    private double fridayEmission;
+    private double saturdayEmission;
+
     @OneToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
