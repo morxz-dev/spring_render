@@ -22,6 +22,7 @@ public class User {
     private String phoneNumber;
     private String profilePicture;
 
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Trip> trips;
 
